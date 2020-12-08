@@ -36,19 +36,24 @@ const childParentLookup = Object.entries(bagRules).reduce((acc, [parentBag, chil
   return acc;
 }, {});
 
-const validBags = new Set();
 
-const lookupChildBags = (child) => {
-  if (!(child in childParentLookup)) {
-    return;
-  } else {
-    childParentLookup[child].forEach((parent) => {
-      // add all unique bags only in the paths.
-      validBags.add(parent);
-      lookupChildBags(parent);
-    });
+const getNumberOfValidOuterBags = (innerBag = 'shiny gold') => {
+  const validBags = new Set();
+
+  const lookupChildBags = (child) => {
+    if (!(child in childParentLookup)) {
+      return;
+    } else {
+      childParentLookup[child].forEach((parent) => {
+        // add all unique bags only in the paths.
+        validBags.add(parent);
+        lookupChildBags(parent);
+      });
+    }
   }
+  lookupChildBags(innerBag);
+
+  return validBags.size;
 }
 
-lookupChildBags('shiny gold');
-console.log(validBags.size);
+console.log(getNumberOfValidOuterBags());
