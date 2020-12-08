@@ -1,0 +1,19 @@
+{
+  "name": "2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "find2020.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "part1": "./node_modules/.bin/babel-node --presets @babel/preset-env ./part1.js",
+    "part2": "./node_modules/.bin/babel-node --presets @babel/preset-env ./part2.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7"
+  }
+}
